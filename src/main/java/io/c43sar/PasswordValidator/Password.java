@@ -3,6 +3,7 @@ package io.c43sar.PasswordValidator;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.IntStream;
 
 public final class Password {
@@ -26,7 +27,7 @@ public final class Password {
 
     private boolean[] decToBin(long n) {
         ArrayList<Boolean> binArray = new ArrayList<Boolean>();
-        for (int i = 0; i < 63; i++) {
+        for (int i = 0; i < 64; i++) {
             long k = n >> i;
             if ((k & 1) > 0) { binArray.add(true); }
             else { binArray.add(false); }
@@ -37,6 +38,22 @@ public final class Password {
             resArray[i] = ((Boolean) tempArray[i]).booleanValue();
         });
         return resArray;
+    }
+
+    private int binToDec(boolean[] binArray) {
+        AtomicInteger dec = new AtomicInteger(0);
+        IntStream.range(0, binArray.length).parallel().forEach(i -> {
+            dec.addAndGet(((int) (new Boolean(binArray[i])).compareTo(true)) * (int)(Math.pow(2d, (double) i)));
+        });
+        return  dec.get();
+    }
+
+    private long binToDecLong(boolean[] binArray) {
+        AtomicLong dec = new AtomicLong(0l);
+        IntStream.range(0, binArray.length).parallel().forEach(i -> {
+            dec.addAndGet(((long) (new Boolean(binArray[i])).compareTo(true)) * (long) (Math.pow(2d, (double) i)));
+        });
+        return  dec.get();
     }
 
     private boolean[] decToBin(int n) {
