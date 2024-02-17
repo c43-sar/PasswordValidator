@@ -3,7 +3,6 @@ package io.c43sar.PasswordValidator;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.IntStream;
 
 public final class Password {
@@ -25,9 +24,9 @@ public final class Password {
         setPasswordString(String.valueOf(charArray));
     }
 
-    private boolean[] decToBin(long n) {
+    private boolean[] decToBin(int n) {
         ArrayList<Boolean> binArray = new ArrayList<Boolean>();
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < 32; i++) {
             long k = n >> i;
             if ((k & 1) > 0) { binArray.add(true); }
             else { binArray.add(false); }
@@ -48,18 +47,6 @@ public final class Password {
         return  dec.get();
     }
 
-    private long binToDecLong(boolean[] binArray) {
-        AtomicLong dec = new AtomicLong(0l);
-        IntStream.range(0, binArray.length).parallel().forEach(i -> {
-            dec.addAndGet(((long) (new Boolean(binArray[i])).compareTo(true)) * (long) (Math.pow(2d, (double) i)));
-        });
-        return  dec.get();
-    }
-
-    private boolean[] decToBin(int n) {
-        return decToBin((long) n);
-    }
-
     /**
      * @calcHashOne is used to calculate the sum of ASCII values of each character present in the
      * @passwordString and store it in private hashStore.
@@ -73,9 +60,6 @@ public final class Password {
         IntStream.range(0, passwordString.length()).parallel().forEach(i -> {
             asciiSum.addAndGet(asciiArray.get(i));
         });
-        if (verboseMessages) {
-            System.out.println("DBG: calcHashOne:\t" + asciiSum.get());
-        }
         hashStore.put(1, asciiSum.get());
         if (verboseMessages) {
             System.out.println("DBG: calcHashOne:\t" + hashStore.get(1));
@@ -144,6 +128,14 @@ public final class Password {
 
     public void setPasswordString(String passwordString) {
         this.passwordString = passwordString;
+    }
+
+    public Map<Integer, Integer> getHashStore() {
+        return hashStore;
+    }
+
+    public int[] getHashArray() {
+        return new int[] {hashStore.get(1), hashStore.get(2), hashStore.get(3)};
     }
 
     public boolean verboseMessagesStatus() {
