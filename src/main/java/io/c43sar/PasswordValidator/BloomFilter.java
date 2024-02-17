@@ -2,14 +2,14 @@ package io.c43sar.PasswordValidator;
 
 import java.util.*;
 
-public class BloomFilter {
+public final class BloomFilter {
     private ArrayList<Boolean> bloomArray;
     private boolean verboseMessages;
     BloomFilter() {
         bloomArray = new ArrayList<Boolean>();
         verboseMessages = false;
     }
-    BloomFilter(boolean[] initialBloomFilter) {
+    public BloomFilter(boolean[] initialBloomFilter) {
         bloomArray = new ArrayList<Boolean>();
         for (int i = 0; i < initialBloomFilter.length; i++) {
             bloomArray.add(Boolean.valueOf(initialBloomFilter[i]));
@@ -17,7 +17,7 @@ public class BloomFilter {
         verboseMessages = false;
     }
 
-    BloomFilter(String initialBloomFilter) {
+    public BloomFilter(String initialBloomFilter) {
         bloomArray = new ArrayList<Boolean>();
         for (char ch: initialBloomFilter.toCharArray()) {
             if (ch == '0') { bloomArray.add(Boolean.FALSE); continue; }
