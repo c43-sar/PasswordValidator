@@ -60,6 +60,10 @@ public final class Password {
         return decToBin((long) n);
     }
 
+    /**
+     * @calcHashOne is used to calculate the sum of ASCII values of each character present in the
+     * @passwordString and store it in private hashStore.
+     */
     public void calcHashOne() {
         final AtomicIntegerArray asciiArray = new AtomicIntegerArray(passwordString.length());
         IntStream.range(0, passwordString.length()).parallel().forEach(i -> {
@@ -75,6 +79,66 @@ public final class Password {
         hashStore.put(1, asciiSum.get());
         if (verboseMessages) {
             System.out.println("DBG: calcHashOne:\t" + hashStore.get(1));
+        }
+    }
+
+    /**
+     * @calcHashTwo is used to calculate "Rule 90" hash and store it in private hashStore
+     * Rule 90 Hash Function:
+     * i. Compute the sum of ASCII values of each character in X. Then, store this sum in variable W.
+     * ii. Convert W to binary of n bits (n = 16 or 32 or 64 bits) and store in S, where $S = \{s_0, s_1, ... , s_{14}\}$.
+     * iii. Using S, calculate $S^{t+1}$, where each element might be calculated as:
+     * ${s_i^{(t+1)} = s_{i-1}^{(t)} \oplus d_i \cdot s_{i-1}^{(t)} \oplus s_{i+1}^{(t)}}$,
+     * where ${d_i = 0}$.
+     * iv. Convert $S^{t+1}$ to decimal and store in private hashStore
+     */
+    public void calcHashTwo() {
+        calcHashOne();
+        boolean[] W = decToBin(Integer.valueOf(hashStore.get(1)));
+        boolean[] resArray = new boolean[W.length];
+        IntStream.range(0, W.length).parallel().forEach(i -> {
+//            resArray[i] = ((Boolean) W[i]).booleanValue();
+            if (i == 0) {
+                resArray[i] = false ^ (false && W[i]) ^ W[i + 1];
+            } else if (i == (W.length - 1)) {
+                resArray[i] = W[i - 1] ^ (false && W[i]) ^ false;
+            } else {
+                resArray[i] = W[i - 1] ^ (false && W[i]) ^ W[i + 1];
+            }
+        });
+        hashStore.put(2,binToDec(resArray));
+        if (verboseMessages) {
+            System.out.println("DBG: calcHashTwo:\t" + hashStore.get(2));
+        }
+    }
+
+    /**
+     * @calcHashThree is used to calculate "Rule 150" hash and store it in private hashStore
+     * Rule 150 Hash Function:
+     * i. Compute the sum of ASCII values of each character in X. Then, store this sum in variable W.
+     * ii. Convert W to binary of n bits (n = 16 or 32 or 64 bits) and store in S, where $S = \{s_0, s_1, ... , s_{14}\}$.
+     * iii. Using S, calculate $S^{t+1}$, where each element might be calculated as:
+     * ${s_i^{(t+1)} = s_{i-1}^{(t)} \oplus d_i \cdot s_{i-1}^{(t)} \oplus s_{i+1}^{(t)}}$,
+     * where ${d_i = 1}$.
+     * iv. Convert $S^{t+1}$ to decimal and store in private hashStore
+     */
+    public void calcHashThree() {
+        calcHashOne();
+        boolean[] W = decToBin(Integer.valueOf(hashStore.get(1)));
+        boolean[] resArray = new boolean[W.length];
+        IntStream.range(0, W.length).parallel().forEach(i -> {
+//            resArray[i] = ((Boolean) W[i]).booleanValue();
+            if (i == 0) {
+                resArray[i] = false ^ (true && W[i]) ^ W[i + 1];
+            } else if (i == (W.length - 1)) {
+                resArray[i] = W[i - 1] ^ (true && W[i]) ^ false;
+            } else {
+                resArray[i] = W[i - 1] ^ (true && W[i]) ^ W[i + 1];
+            }
+        });
+        hashStore.put(3,binToDec(resArray));
+        if (verboseMessages) {
+            System.out.println("DBG: calcHashThree:\t" + hashStore.get(3));
         }
     }
 
