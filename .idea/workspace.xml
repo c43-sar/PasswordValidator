@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6e1c1cd-0a41-47aa-8e94-b5f46806e83f" name="Changes" comment="Added BloomFilter Constructors">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/Password.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="a6e1c1cd-0a41-47aa-8e94-b5f46806e83f" name="Changes" comment="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/c43sar/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/c43sar/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/BloomFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/Password.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Soumyajit Kolay &lt;skolay@vivaldi.net&gt;" />
+      </list>
+    </option>
     <option name="PUSH_TAGS">
       <GitPushTagMode>
         <option name="argument" value="--follow-tags" />
@@ -30,6 +35,7 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -45,16 +51,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.BloomFilter.executor": "Run",
+    "Application.Main.executor": "Run",
     "OverrideImplement.generate.javadoc": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+    "java.suggest.annotation.dependency": "false",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "project.scopes"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BloomFilter">
     <configuration name="BloomFilter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.c43sar.PasswordValidator.BloomFilter" />
       <module name="PasswordValidator" />
@@ -68,9 +77,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.c43sar.Main" />
+      <module name="PasswordValidator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.c43sar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BloomFilter" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -98,11 +121,56 @@
       <option name="project" value="LOCAL" />
       <updated>1708155375440</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Password class, Added verbose debugging to BloomFilter.java">
+      <option name="closed" value="true" />
+      <created>1708166730577</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708166730577</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Major Changes&#10;Changed BloomFilter Access specifiers, made class final&#10;Changed Password to a final class&#10;Added verboseMessages to Password.java&#10;Imported libraries related to parallelism in Password.java&#10;Added decToBin private function&#10;Added first hashing function">
+      <option name="closed" value="true" />
+      <created>1708175587053</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708175587053</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Functions to convert binary to decimal, added minor corrections">
+      <option name="closed" value="true" />
+      <created>1708181239949</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708181239949</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added 2nd and 3rd Hash Functions, added Javadoc for all hash functions">
+      <option name="closed" value="true" />
+      <created>1708182624779</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708182624780</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes">
+      <option name="closed" value="true" />
+      <created>1708184163076</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708184163076</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added BloomFilter Constructors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added BloomFilter Constructors" />
+    <MESSAGE value="Added Password class, Added verbose debugging to BloomFilter.java" />
+    <MESSAGE value="Major Changes&#10;Changed BloomFilter Access specifiers, made class final&#10;Changed Password to a final class&#10;Added verboseMessages to Password.java&#10;Imported libraries related to parallelism in Password.java&#10;Added decToBin private function&#10;Added first hashing function" />
+    <MESSAGE value="Added Functions to convert binary to decimal, added minor corrections" />
+    <MESSAGE value="Added 2nd and 3rd Hash Functions, added Javadoc for all hash functions" />
+    <MESSAGE value="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes" />
   </component>
 </project>

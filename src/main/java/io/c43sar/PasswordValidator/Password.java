@@ -5,6 +5,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.stream.IntStream;
 
+/**
+ * @author Soumyajit Kolay
+ * @version 0.1
+ */
 public final class Password {
     private String passwordString;
 
@@ -42,7 +46,7 @@ public final class Password {
     private int binToDec(boolean[] binArray) {
         AtomicInteger dec = new AtomicInteger(0);
         IntStream.range(0, binArray.length).parallel().forEach(i -> {
-            dec.addAndGet(((int) (new Boolean(binArray[i])).compareTo(true)) * (int)(Math.pow(2d, (double) i)));
+            dec.addAndGet(((int) (Boolean.valueOf(binArray[i])).compareTo(true)) * (int)(Math.pow(2d, (double) i)));
         });
         return  dec.get();
     }

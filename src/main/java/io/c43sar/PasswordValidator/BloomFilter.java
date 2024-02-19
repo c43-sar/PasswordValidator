@@ -1,7 +1,12 @@
 package io.c43sar.PasswordValidator;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
+/**
+ * @author Soumyajit Kolay
+ * @version 0.1
+ */
 public final class BloomFilter {
     private ArrayList<Boolean> bloomArray;
     private boolean verboseMessages;
@@ -32,6 +37,35 @@ public final class BloomFilter {
         verboseMessages = false;
     }
 
+    public void storeHashes(int[] hashArray) {
+        for (int i: hashArray) {
+            try {
+                bloomArray.get(i);
+            } catch (IndexOutOfBoundsException e) {
+                while(bloomArray.size() <= i) {
+                    bloomArray.add(Boolean.FALSE);
+                }
+            }
+        }
+        IntStream.range(0, hashArray.length).parallel().forEach(i -> {
+            bloomArray.set(hashArray[i], Boolean.TRUE);
+            if (verboseMessages) { System.out.println("DBG: " + hashArray[i] + ":" + bloomArray.get(hashArray[i])); }
+        });
+    }
+
+
+    public ArrayList<Boolean> getBloomFilter() {
+        return bloomArray;
+    }
+
+    public boolean[] getBloomArray() {
+        boolean[] arr = new boolean[bloomArray.size()];
+        IntStream.range(0, bloomArray.size()).parallel().forEach(i -> {
+            arr[i] = bloomArray.get(i);
+        });
+        return arr;
+    }
+
     public void enableVerboseMessages() {
         verboseMessages = true;
     }
@@ -44,8 +78,10 @@ public final class BloomFilter {
         verboseMessages = b;
     }
 
-    public static void main(String[] args) {
-        // Test Statements
-        BloomFilter obj = new BloomFilter(new boolean[] {true, false, true});
-    }
+//    public static void main(String[] args) {
+//        // Test Statements
+//        BloomFilter obj = new BloomFilter(new boolean[] {true, false, true});
+//        obj.enableVerboseMessages();
+//        obj.storeHashes(new int[] {0,76,2,1});
+//    }
 }
