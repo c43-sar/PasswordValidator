@@ -52,8 +52,7 @@ public final class Password {
     }
 
     /**
-     * @calcHashOne is used to calculate the sum of ASCII values of each character present in the
-     * @passwordString and store it in private hashStore.
+     * calculates the sum of ASCII values of each character present in the @passwordString and store it in private hashStore.
      */
     public void calcHashOne() {
         final AtomicIntegerArray asciiArray = new AtomicIntegerArray(passwordString.length());
@@ -71,7 +70,7 @@ public final class Password {
     }
 
     /**
-     * @calcHashTwo is used to calculate "Rule 90" hash and store it in private hashStore
+     * Calculates "Rule 90" hash and store it in private hashStore
      * Rule 90 Hash Function:
      * i. Compute the sum of ASCII values of each character in X. Then, store this sum in variable W.
      * ii. Convert W to binary of n bits (n = 16 or 32 or 64 bits) and store in S, where $S = \{s_0, s_1, ... , s_{14}\}$.
@@ -101,7 +100,7 @@ public final class Password {
     }
 
     /**
-     * @calcHashThree is used to calculate "Rule 150" hash and store it in private hashStore
+     * Calculate "Rule 150" hash and store it in private hashStore
      * Rule 150 Hash Function:
      * i. Compute the sum of ASCII values of each character in X. Then, store this sum in variable W.
      * ii. Convert W to binary of n bits (n = 16 or 32 or 64 bits) and store in S, where $S = \{s_0, s_1, ... , s_{14}\}$.

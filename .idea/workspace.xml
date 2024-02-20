@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6e1c1cd-0a41-47aa-8e94-b5f46806e83f" name="Changes" comment="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes">
+    <list default="true" id="a6e1c1cd-0a41-47aa-8e94-b5f46806e83f" name="Changes" comment="Major Changes&#10;Added storeHashes method to BloomFilter.java&#10;Added getter methods for bloomArray to BloomFilter.java&#10;Removed Main method from BloomFilter.java&#10;Added minor Javadoc to Password.java and BloomFilter.java&#10;Removed use of deprecated Boolean() constructor from Password.java&#10;Minor Workspace changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/c43sar/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/c43sar/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/c43sar/PasswordValidator/BloomFilter.java" afterDir="false" />
@@ -161,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708184163076</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Major Changes&#10;Added storeHashes method to BloomFilter.java&#10;Added getter methods for bloomArray to BloomFilter.java&#10;Removed Main method from BloomFilter.java&#10;Added minor Javadoc to Password.java and BloomFilter.java&#10;Removed use of deprecated Boolean() constructor from Password.java&#10;Minor Workspace changes">
+      <option name="closed" value="true" />
+      <created>1708329422943</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708329422944</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -171,6 +179,7 @@
     <MESSAGE value="Added Functions to convert binary to decimal, added minor corrections" />
     <MESSAGE value="Added 2nd and 3rd Hash Functions, added Javadoc for all hash functions" />
     <MESSAGE value="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major Changes&#10;Removed functions for Long variables/parameters and related operations&#10;Added Functions to return hashStore&#10;Removed unnecessary codes" />
+    <MESSAGE value="Major Changes&#10;Added storeHashes method to BloomFilter.java&#10;Added getter methods for bloomArray to BloomFilter.java&#10;Removed Main method from BloomFilter.java&#10;Added minor Javadoc to Password.java and BloomFilter.java&#10;Removed use of deprecated Boolean() constructor from Password.java&#10;Minor Workspace changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Changes&#10;Added storeHashes method to BloomFilter.java&#10;Added getter methods for bloomArray to BloomFilter.java&#10;Removed Main method from BloomFilter.java&#10;Added minor Javadoc to Password.java and BloomFilter.java&#10;Removed use of deprecated Boolean() constructor from Password.java&#10;Minor Workspace changes" />
   </component>
 </project>
