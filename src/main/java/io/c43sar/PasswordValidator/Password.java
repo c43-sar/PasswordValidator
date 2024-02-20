@@ -133,6 +133,10 @@ public final class Password {
         this.passwordString = passwordString;
     }
 
+    public StringBuffer getPasswordString() {
+        return new StringBuffer(passwordString);
+    }
+
     public Map<Integer, Integer> getHashStore() {
         return hashStore;
     }
